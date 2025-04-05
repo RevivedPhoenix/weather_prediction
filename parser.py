@@ -81,13 +81,12 @@ def parse_part2():
             l = parser_dates(r)
             l_day_temp, l_evening_temp, l_night_temp, l_morning = [], [], [], []
             l_day_temp, l_evening_temp, l_night_temp, l_morning = parser_temperature(r)
+            d = {'Date': l, 'Morning temperature': l_morning, 'Daily temperature': l_day_temp, 'Evening temperature': l_evening_temp, 'Night temperature': l_night_temp}
             if len(d['Date']) != len(d['Daily temperature']):
                 d['Morning temperature'].pop(0)
                 d['Daily temperature'].pop(0)
                 d['Evening temperature'].pop(0)
                 d['Night temperature'].pop(0)
-            d = {'Date': l, 'Morning temperature': l_morning, 'Day temperature': l_day_temp, 'Evening temperature': l_evening_temp, 'Night temperature': l_night_temp}
-            
             df = pd.concat([df, pd.DataFrame(d)], ignore_index=True)
     return df
 
